@@ -136,13 +136,14 @@
       height: 60px;
       display: flex;
       align-items: center;
-      transition: background 0.35s, box-shadow 0.35s;
+      border-bottom: 1px solid rgba(0,212,255,0.25);
+      transition: background 0.35s, box-shadow 0.35s, border-color 0.35s;
     }
     #navbar.scrolled {
       background: rgba(8,13,26,0.92);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
-      box-shadow: 0 1px 0 var(--border);
+      border-bottom-color: rgba(0,212,255,0.4);
     }
     .nav-inner {
       display: flex;
@@ -248,25 +249,33 @@
       border-bottom: 1px solid var(--border);
     }
 
-    /* Scan-line sweep */
-    #hero::after {
-      content: '';
+    /* ── Hero scan-line (clipped to hero section) ── */
+    #scanline {
       position: absolute;
-      inset: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
       background: linear-gradient(
-        to bottom,
+        90deg,
         transparent 0%,
-        rgba(0,212,255,0.025) 50%,
+        transparent 30%,
+        rgba(0,212,255,0.15) 38%,
+        rgba(0,212,255,0.55) 50%,
+        rgba(0,212,255,0.15) 62%,
+        transparent 70%,
         transparent 100%
       );
-      background-size: 100% 200%;
-      animation: scanline 6s linear infinite;
+      box-shadow: 0 0 12px rgba(0,212,255,0.4), 0 0 30px rgba(0,212,255,0.15);
+      animation: scan-sweep 6s linear infinite;
       pointer-events: none;
-      z-index: 0;
+      z-index: 10;
     }
-    @keyframes scanline {
-      0%   { background-position: 0 -100%; }
-      100% { background-position: 0 200%; }
+    @keyframes scan-sweep {
+      0%   { top: 0%;   opacity: 0; }
+      8%   { top: 5%;   opacity: 1; }
+      80%  { top: 80%;  opacity: 1; }
+      96%  { top: 96%;  opacity: 0; }
+      100% { top: 100%; opacity: 0; }
     }
 
     /* Radial glow top */
@@ -305,7 +314,7 @@
     .hero-name {
       font-family: 'Barlow Condensed', sans-serif;
       font-weight: 800;
-      font-size: clamp(4.5rem, 12vw, 10rem);
+      font-size: clamp(3rem, 7vw, 6rem);
       line-height: 0.9;
       letter-spacing: 0.01em;
       text-transform: uppercase;
@@ -315,7 +324,7 @@
 
     .hero-typewriter {
       font-family: 'Share Tech Mono', monospace;
-      font-size: 0.9rem;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
       color: var(--muted);
       letter-spacing: 0.08em;
       margin-bottom: 1.75rem;
@@ -1114,11 +1123,12 @@
        HERO
   ══════════════════════════════════════ -->
   <section id="hero">
+    <div id="scanline"></div>
     <div class="container hero-inner">
       <p class="hero-label reveal">Network Architect &amp; Cloud Engineer</p>
 
       <h1 class="hero-name reveal" style="transition-delay:0.08s">
-        LATEEF<br><span class="accent">LAW.</span>
+        LATEEF<br><span class="accent">LAW</span>
       </h1>
 
       <p class="hero-typewriter reveal" style="transition-delay:0.16s" id="typewriter">
