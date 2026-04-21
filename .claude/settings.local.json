@@ -5,7 +5,9 @@
       "Read(//c/Users/Lateef Law/Downloads/**)",
       "Bash(curl -sL -k \"https://lateeflaw.info/articles/ipsec-cloud-interconnect.html\" -o \"/tmp/pub-article.html\")",
       "Bash(cp /tmp/pub-article.html \"C:/Users/Lateef Law/Desktop/Projects and Code/lateeflaw.info/published-article.tmp.html\")",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(sed -i '1369,1481d' \"C:/Users/Lateef Law/Desktop/Projects and Code/lateeflaw.info/index.html\")",
+      "Bash(sed -n '1365,1375p' \"C:/Users/Lateef Law/Desktop/Projects and Code/lateeflaw.info/index.html\")"
     ]
   }
 }
