@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/Lateef Law/Desktop/**)",
+      "Read(//c/Users/Lateef Law/Downloads/**)",
+      "Bash(curl -sL -k \"https://lateeflaw.info/articles/ipsec-cloud-interconnect.html\" -o \"/tmp/pub-article.html\")",
+      "Bash(cp /tmp/pub-article.html \"C:/Users/Lateef Law/Desktop/Projects and Code/lateeflaw.info/published-article.tmp.html\")",
+      "Read(//tmp/**)"
+    ]
+  }
+}
